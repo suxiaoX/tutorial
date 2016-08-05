@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link href="http://fonts.googleapis.com/css?family=Cookie|Open+Sans:400,700" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+	<form ng-controller="OrderFormController">
+
+		<h1>Services</h1>
+
+		<ul>
+			<!-- Loop through the services array, assign a click handler, and set or
+				remove the "active" css class if needed -->
+			<li ng-repeat="service in services" ng-class = "{active:service.active}" ng-click = "showActive(service)">
+				{{service.name}}<span>{{service.price | currency:"￥" }}</span>
+			</li>
+		</ul>
+
+		<div class="total">
+			<!-- Calculate the total price of all chosen services. Format it as currency. -->
+			Total: <span>{{totalPrice() | currency:"￥" }}</span>
+		</div>
+
+	</form>
+<script src="angular.js"></script>
+<script src="order.js"></script>
+</body>
+</html>
